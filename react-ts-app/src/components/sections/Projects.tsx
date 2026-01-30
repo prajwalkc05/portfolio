@@ -90,7 +90,7 @@ export default function Projects() {
             My <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A curated selection of personal and academic projects showcasing my
+            A curated selection of personal and academic projects showcasing my 
             skills in Android, Web, and AI development.
           </p>
         </motion.div>
