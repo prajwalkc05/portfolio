@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { GraduationCap, Briefcase, Calendar, MapPin } from "lucide-react";
+import { GraduationCap, Briefcase, Calendar, MapPin, CheckCircle } from "lucide-react";
 
 const Education = () => {
   const ref = useRef(null);
@@ -40,18 +40,18 @@ const Education = () => {
     title: "Android Application Developer Intern",
     organization: "Saiket Systems",
     location: "Remote",
-    period: "2025 – Present",
-    highlights: ["Android Development", "Java", "Firebase"],
-    current: true,
+    period: "Dec 2025 – Jan 2026",
+    highlights: ["Android Development", "Java", "Firebase", "Completed"],
+    current: false,
   },
   {
     type: "internship",
     title: "Android Application Developer Intern",
     organization: "Coding Samurai",
     location: "Remote",
-    period: "2025 – Present",
-    highlights: ["Android Development", "Java", "Project-Based Learning"],
-    current: true,
+    period: "Dec 2025 – Jan 2026",
+    highlights: ["Android Development", "Java", "Project-Based Learning", "Completed"],
+    current: false,
   },
 ];
 
@@ -93,7 +93,7 @@ const Education = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2 + index * 0.15, duration: 0.6 }}
               className={`relative flex items-start gap-8 mb-12 ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                index % 2 === 1 ? "md:flex-row" : "md:flex-row-reverse"
               }`}
             >
               {/* Timeline Node */}
@@ -110,31 +110,33 @@ const Education = () => {
 
               {/* Content Card */}
               <div className={`ml-20 md:ml-0 md:w-[calc(50%-2rem)] ${
-                index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"
+                index % 2 === 1 ? "md:pr-12 md:text-right" : "md:pl-12"
               }`}>
                 <motion.div
                   whileHover={{ y: -5 }}
                   className="glass-card p-8 hover:border-neon-cyan/30 transition-all duration-500"
                 >
-                  {/* Type Badge */}
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4 ${
-                    item.type === "education" 
-                      ? "bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30" 
-                      : "bg-neon-purple/10 text-neon-purple border border-neon-purple/30"
-                  }`}>
-                    {item.type === "education" ? (
-                      <GraduationCap className="w-3.5 h-3.5" />
-                    ) : (
-                      <Briefcase className="w-3.5 h-3.5" />
-                    )}
-                    {item.type === "education" ? "Education" : "Internship"}
+                  {/* Type Badge - Always on left */}
+                  <div className="flex justify-start mb-4">
+                    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium ${
+                      item.type === "education" 
+                        ? "bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/30" 
+                        : "bg-neon-purple/10 text-neon-purple border border-neon-purple/30"
+                    }`}>
+                      {item.type === "education" ? (
+                        <GraduationCap className="w-3.5 h-3.5" />
+                      ) : (
+                        <Briefcase className="w-3.5 h-3.5" />
+                      )}
+                      {item.type === "education" ? "Education" : "Internship"}
+                    </div>
                   </div>
 
                   <h3 className="font-sora text-xl font-semibold mb-2">{item.title}</h3>
                   <p className="text-neon-cyan font-medium mb-2">{item.organization}</p>
                   
                   <div className={`flex flex-wrap gap-4 text-sm text-muted-foreground mb-4 ${
-                    index % 2 === 0 ? "md:justify-end" : ""
+                    index % 2 === 1 ? "md:justify-end" : ""
                   }`}>
                     <span className="flex items-center gap-1">
                       <Calendar className="w-4 h-4" />
@@ -148,13 +150,18 @@ const Education = () => {
 
                   {/* Highlights */}
                   <div className={`flex flex-wrap gap-2 ${
-                    index % 2 === 0 ? "md:justify-end" : ""
+                    index % 2 === 1 ? "md:justify-end" : ""
                   }`}>
                     {item.highlights.map((highlight) => (
                       <span
                         key={highlight}
-                        className="px-2 py-1 rounded-md text-xs bg-muted/50 text-muted-foreground"
+                        className={`px-2 py-1 rounded-md text-xs flex items-center gap-1 ${
+                          highlight === "Completed" 
+                            ? "bg-green-500/10 text-green-400 border border-green-500/30" 
+                            : "bg-muted/50 text-muted-foreground"
+                        }`}
                       >
+                        {highlight === "Completed" && <CheckCircle className="w-3 h-3" />}
                         {highlight}
                       </span>
                     ))}
@@ -162,7 +169,7 @@ const Education = () => {
 
                   {/* Current Badge */}
                   {item.current && (
-                    <div className={`mt-4 ${index % 2 === 0 ? "md:text-right" : ""}`}>
+                    <div className={`mt-4 ${index % 2 === 1 ? "md:text-right" : ""}`}>
                       <span className="inline-flex items-center gap-1 text-xs text-neon-cyan">
                         <span className="w-2 h-2 rounded-full bg-neon-cyan animate-pulse" />
                         Currently Pursuing

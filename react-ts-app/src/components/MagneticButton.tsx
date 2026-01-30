@@ -6,9 +6,10 @@ interface MagneticButtonProps {
   className?: string;
   onClick?: () => void;
   href?: string;
+  download?: string;
 }
 
-const MagneticButton = ({ children, className = "", onClick, href }: MagneticButtonProps) => {
+const MagneticButton = ({ children, className = "", onClick, href, download }: MagneticButtonProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -42,6 +43,7 @@ const MagneticButton = ({ children, className = "", onClick, href }: MagneticBut
     <div ref={ref} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
       <Component
         href={href}
+        download={download}
         onClick={onClick}
         style={{
           x: xSpring,

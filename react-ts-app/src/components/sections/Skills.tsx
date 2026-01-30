@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Skills = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [isPaused, setIsPaused] = useState(false);
 
   const skillCategories = [
     {
@@ -25,7 +26,7 @@ const Skills = () => {
       gradient: "from-purple-400 to-pink-500",
       skills: [
         { name: "Node.js", level: 70, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-        { name: "Express.js", level: 65, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" },
+        { name: "Express.js", level: 65, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg" },
         { name: "PHP", level: 75, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
         { name: "Python", level: 60, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
         { name: "REST APIs", level: 75, icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
@@ -138,8 +139,7 @@ const Skills = () => {
                 <h3 className="font-sora text-lg font-semibold">{category.title}</h3>
               </div>
 
-              {/* Skills List with Icons */}
-              <div className="space-y-4">
+                    <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div 
                     key={skill.name} 
@@ -149,11 +149,13 @@ const Skills = () => {
                   >
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <img 
-                          src={skill.icon} 
-                          alt={skill.name}
-                          className="w-5 h-5 object-contain"
-                        />
+                        <div className={`w-5 h-5 flex items-center justify-center ${skill.name === 'Express.js' ? 'bg-white rounded-sm' : ''}`}>
+                          <img 
+                            src={skill.icon} 
+                            alt={skill.name}
+                            className="w-5 h-5 object-contain"
+                          />
+                        </div>
                         <span className="text-foreground font-medium text-sm">{skill.name}</span>
                       </div>
                       <span className="text-xs text-muted-foreground">{skill.level}%</span>
@@ -188,9 +190,11 @@ const Skills = () => {
           <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
           
           <motion.div
-            animate={{ x: [0, -1200] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+            animate={isPaused ? {} : { x: [0, -1200] }}
+            transition={isPaused ? {} : { duration: 25, repeat: Infinity, ease: "linear" }}
             className="flex gap-6"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
           >
             {[...techLogos, ...techLogos].map((tech, index) => (
               <motion.div

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Globe, Database, Smartphone, Cloud } from "lucide-react";
+import { Github, ExternalLink, Globe, Database, Smartphone, Cloud, Download } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const projects = [
@@ -10,6 +10,7 @@ const projects = [
     icon: Cloud,
     tech: ["Android", "API", "Java", "Weather API"],
     github: "https://github.com/prajwalkc05",
+    download: "https://github.com/prajwalkc05/CODING-SAMURAI-INTERNSHIP-TASK/releases/download/weather-v1.0/weatherapp.apk",
     featured: true,
   },
   {
@@ -19,6 +20,7 @@ const projects = [
     icon: Smartphone,
     tech: ["Android", "Java", "UI Design"],
     github: "https://github.com/prajwalkc05",
+    download: "https://github.com/prajwalkc05/calculator-app/releases/download/v1.0/app-debug.apk",
     featured: false,
   },
   {
@@ -28,6 +30,7 @@ const projects = [
     icon: Globe,
     tech: ["Android", "Firebase", "Realtime DB"],
     github: "https://github.com/prajwalkc05",
+    download: "https://github.com/prajwalkc05/CODING-SAMURAI-INTERNSHIP-TASK/releases/download/chat-v1.0/chatapp.apk",
     featured: true,
   },
   {
@@ -37,6 +40,7 @@ const projects = [
     icon: Globe,
     tech: ["React", "Node.js", "MongoDB"],
     github: "https://github.com/prajwalkc05",
+    demo: "https://carbuyandsell.vercel.app/",
     featured: false,
   },
   {
@@ -56,6 +60,7 @@ const projects = [
     icon: Database,
     tech: ["Python", "Machine Learning", "AI"],
     github: "https://github.com/prajwalkc05",
+    demo: "https://career-ai-demo.vercel.app",
     featured: false,
   },
   {
@@ -65,6 +70,7 @@ const projects = [
     icon: Globe,
     tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/prajwalkc05",
+    demo: "https://groceries-frontend-demo.vercel.app",
     featured: false,
   },
 ];
@@ -151,6 +157,19 @@ export default function Projects() {
                         <Github className="w-4 h-4" />
                         Code
                       </a>
+
+                      {project.download && (
+                        <a
+                          href={project.download}
+                          download
+                          className="flex items-center gap-2 px-4 py-2 rounded-full 
+                          bg-gradient-to-r from-green-400 to-emerald-500 
+                          text-black text-sm font-medium"
+                        >
+                          <Download className="w-4 h-4" />
+                          APK
+                        </a>
+                      )}
 
                       {project.demo && (
                         <a

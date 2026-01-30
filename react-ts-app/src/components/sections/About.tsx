@@ -200,19 +200,18 @@ const About = () => {
                   Bachelor of Computer Applications (BCA)
                 </span>
 
-                <span className="text-muted-foreground">
-                  Currently Pursuing
-                </span>
-
                 <div className="flex justify-center gap-6 mt-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-neon-cyan">7.15</div>
+                    <div className="text-lg font-medium text-muted-foreground">7.15</div>
                     <div className="text-sm text-muted-foreground">CGPA</div>
                   </div>
 
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-neon-cyan">2023 – 2026</div>
-                    <div className="text-sm text-muted-foreground">Duration</div>
+                    <div className="text-lg font-medium text-neon-cyan">2023 – 2026</div>
+                    <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                      Currently Pursuing
+                    </div>
                   </div>
                 </div>
               </div>
