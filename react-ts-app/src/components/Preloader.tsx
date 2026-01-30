@@ -54,7 +54,7 @@ const Preloader = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="relative mb-8"
         >
-          <div className="text-6xl font-bold text-gradient">PK</div>
+          <div className="text-6xl font-bold text-gradient">KC</div>
           
           {/* Rotating Rings */}
           <motion.div
